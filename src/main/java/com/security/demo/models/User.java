@@ -2,13 +2,16 @@ package com.security.demo.models;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-public class User {
+import java.util.Collection;
+@Document(collection = "User")
+public class User implements UserDetails {
 
   @Id
-  public ObjectId _id;
-  @Field
   public String username;
   @Field
   public String password;
@@ -16,21 +19,44 @@ public class User {
   public String role;
 
   public User() {}
-  public User(ObjectId _id, String username, String password, String role) {
-    this._id = _id;
+  public User( String username, String password, String role) {
     this.username = username;
     this.password = password;
     this.role=role;
   }
-  
-  public void set_id(ObjectId _id) { this._id = _id; }
-  public String get_id() { return this._id.toHexString(); }
   public void setPassword(String password) { this.password = password; }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return null;
+  }
+
   public String getPassword() { return password; }
   public void setUsername(String username) { this.username = username; }
   public String getUsername() { return username; }
-  
-public String getRole() {
+
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
+
+  public String getRole() {
 	return role;
 }
 public void setRole(String role) {
