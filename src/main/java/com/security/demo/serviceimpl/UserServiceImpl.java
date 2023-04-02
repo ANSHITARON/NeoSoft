@@ -1,12 +1,14 @@
-package serviceimpl;
+package com.security.demo.serviceimpl;
 
-import models.User;
-import repo.UserRepository;
-import service.UserService;
+import com.security.demo.models.User;
+import com.security.demo.repo.UserRepository;
+import com.security.demo.service.UserService;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
-
+@Service
 public class UserServiceImpl implements UserService {
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Override
     public User signUp(User user) {
         User savedUser =userRepository.save(user);

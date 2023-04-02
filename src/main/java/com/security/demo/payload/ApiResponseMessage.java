@@ -1,4 +1,4 @@
-package payload;
+package com.security.demo.payload;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 @Builder

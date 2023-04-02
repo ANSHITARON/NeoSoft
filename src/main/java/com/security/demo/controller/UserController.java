@@ -1,14 +1,13 @@
-package controller;
+package com.security.demo.controller;
 
 
-import models.User;
+import com.security.demo.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import payload.ApiResponseMessage;
-import service.UserService;
+import com.security.demo.payload.ApiResponseMessage;
+import com.security.demo.service.UserService;
 
 import java.util.List;
 

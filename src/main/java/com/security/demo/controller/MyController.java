@@ -1,11 +1,11 @@
-package controller;
+package com.security.demo.controller;
 
 
-import models.Student;
+import com.security.demo.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import repo.StudentRepo;
+import com.security.demo.repo.StudentRepo;
 
 import java.util.List;
 

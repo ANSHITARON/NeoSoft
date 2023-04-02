@@ -1,4 +1,4 @@
-package models;
+package com.security.demo.models;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;

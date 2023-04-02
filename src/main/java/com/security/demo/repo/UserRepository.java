@@ -1,7 +1,7 @@
-package repo;
+package com.security.demo.repo;
 
 
-import models.User;
+import com.security.demo.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

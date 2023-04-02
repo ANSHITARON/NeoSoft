@@ -1,10 +1,10 @@
-package service;
+package com.security.demo.service;
 
 
-import models.User;
+import com.security.demo.models.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 public interface UserService {
 
 	User signUp(User user);
