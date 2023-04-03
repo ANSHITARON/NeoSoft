@@ -2,29 +2,25 @@ package com.security.demo.models;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
+@Document(collation = "User")
 public class User {
 
+
   @Id
-  public ObjectId _id;
-  @Field
-  public String username;
-  @Field
-  public String password;
-  @Field
-  public String role;
+  private String username;
+  private String password;
+  private String role;
 
   public User() {}
-  public User(ObjectId _id, String username, String password, String role) {
-    this._id = _id;
+  public User(String username, String password, String role) {
     this.username = username;
     this.password = password;
     this.role=role;
   }
   
-  public void set_id(ObjectId _id) { this._id = _id; }
-  public String get_id() { return this._id.toHexString(); }
+
   public void setPassword(String password) { this.password = password; }
   public String getPassword() { return password; }
   public void setUsername(String username) { this.username = username; }
