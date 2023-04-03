@@ -20,6 +20,7 @@ public class UserController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+
 	@PostMapping(value="/signUp")
 	public ResponseEntity<User> signUp(@RequestParam String username, @RequestParam String password, @RequestParam String role) {
 
@@ -28,6 +29,7 @@ public class UserController {
 		user.setPassword(passwordEncoder.encode(password));
 		user.setRole(role);
 		User savedUser =userservice.signUp(user);
+
 
 		return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 	}
