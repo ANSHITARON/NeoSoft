@@ -29,19 +29,19 @@ public class UserController {
 		return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 	}
 	@PutMapping("/{userID}")
-	public ResponseEntity<User> updateUser(@PathVariable("userId") String userId, @RequestBody User user)
+	public ResponseEntity<User> updateUser(@PathVariable("userID") String userId, @RequestBody User user)
 	{
 		return new ResponseEntity<>(userservice.updateUser(user,userId),HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{userId}")
 	public ResponseEntity<ApiResponseMessage> deleteUser(@PathVariable String userId){
-		userservice.deleteUser(userId);
-		ApiResponseMessage message= ApiResponseMessage.builder().message("user not found exception").success(true).Status(HttpStatus.OK).build();
+		userservice.VoidodeleteUser(userId);
+		ApiResponseMessage message= ApiResponseMessage.builder().message("user deleted").success(true).Status(HttpStatus.OK).build();
 		return new ResponseEntity<>(message,HttpStatus.OK);
 	}
 
-	@GetMapping()
+	@GetMapping
 	public ResponseEntity<List<User>> getAllUser(){
 		return new ResponseEntity<>(userservice.getAllUser(),HttpStatus.OK);
 	}
@@ -61,11 +61,5 @@ public class UserController {
 	{
 		return new ResponseEntity<>(userservice.searchUser(keywords),HttpStatus.OK);
 	}
-
-
-	
-	
-	
-	
 
 }
