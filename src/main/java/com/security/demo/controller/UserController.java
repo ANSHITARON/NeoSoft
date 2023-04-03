@@ -5,6 +5,7 @@ import com.security.demo.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import com.security.demo.payload.ApiResponseMessage;
 import com.security.demo.service.UserService;
@@ -16,32 +17,34 @@ import java.util.List;
 public class UserController {
 	@Autowired
 	private UserService userservice;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@PostMapping(value="/signUp")
 	public ResponseEntity<User> signUp(@RequestParam String username, @RequestParam String password, @RequestParam String role) {
 
 		User user=new User();
 		user.setUsername(username);
-		user.setPassword(password);
+		user.setPassword(passwordEncoder.encode(password));
 		user.setRole(role);
 		User savedUser =userservice.signUp(user);
 
 		return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
 	}
 	@PutMapping("/{userID}")
-	public ResponseEntity<User> updateUser(@PathVariable("userId") String userId, @RequestBody User user)
+	public ResponseEntity<User> updateUser(@PathVariable("userID") String userId, @RequestBody User user)
 	{
 		return new ResponseEntity<>(userservice.updateUser(user,userId),HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{userId}")
 	public ResponseEntity<ApiResponseMessage> deleteUser(@PathVariable String userId){
-		userservice.deleteUser(userId);
-		ApiResponseMessage message= ApiResponseMessage.builder().message("user not found exception").success(true).Status(HttpStatus.OK).build();
+		userservice.VoidodeleteUser(userId);
+		ApiResponseMessage message= ApiResponseMessage.builder().message("user deleted").success(true).Status(HttpStatus.OK).build();
 		return new ResponseEntity<>(message,HttpStatus.OK);
 	}
 
-	@GetMapping()
+	@GetMapping
 	public ResponseEntity<List<User>> getAllUser(){
 		return new ResponseEntity<>(userservice.getAllUser(),HttpStatus.OK);
 	}
@@ -61,11 +64,5 @@ public class UserController {
 	{
 		return new ResponseEntity<>(userservice.searchUser(keywords),HttpStatus.OK);
 	}
-
-
-	
-	
-	
-	
 
 }

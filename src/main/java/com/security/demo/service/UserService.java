@@ -2,7 +2,6 @@ package com.security.demo.service;
 
 
 import com.security.demo.models.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 public interface UserService {
@@ -14,7 +13,7 @@ public interface UserService {
 
 	User getUserById(String userId);
 
-	void deleteUser(String userId);
+	void VoidodeleteUser(String userId);
 
 	User updateUser(User user, String userId);
 

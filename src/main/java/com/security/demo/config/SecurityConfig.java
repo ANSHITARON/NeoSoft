@@ -20,7 +20,7 @@ public class SecurityConfig {
 
     //   return new InMemoryUserDetailsManager(normal, admin);
     @Bean
-    private DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider =new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(this.MongouserDetailsService);
        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
