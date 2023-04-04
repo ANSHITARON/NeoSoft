@@ -30,9 +30,19 @@ public class User implements UserDetails {
     return null;
   }
 
-  public String getPassword() { return password; }
+
   public void setUsername(String username) { this.username = username; }
-  public String getUsername() { return username; }
+
+
+  @Override
+  public String getUsername() {
+    return this.username;
+  }
+
+  @Override
+  public String getPassword() {
+    return this.password;
+  }
 
 
   @Override

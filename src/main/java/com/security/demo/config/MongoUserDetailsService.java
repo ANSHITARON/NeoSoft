@@ -22,15 +22,15 @@ public class MongoUserDetailsService implements UserDetailsService{
 	private UserRepository userRepository;
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		com.security.demo.models.User user=userRepository.findByUsername(username);
+		UserDetails userDetails=userRepository.findByUsername(username);
 		
-		if(user == null) {
+		if(userDetails == null) {
 	      throw new UsernameNotFoundException("User not found");
 	    }
 		
 		//List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority(user.getRole()));
 		
-	    return user;
+	    return userDetails;
 	}
 
 
