@@ -2,9 +2,7 @@ name: Java CI with maven
 
 on:
   push:
-  branches:| anshit |
-  pull_request:
-  branches:| anshit |
+  branches: [ anshit ]
 
 jobs:
   build:
@@ -25,5 +23,15 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots package
         
+        - name: Build and push Docker images
+          uses: docker/build-push-action@v4.0.0
+          with :
+           image: anshit84/neosoft
+           registry: docker.io
+           username: anshit84
+           password: anshit@123
+           
+
+
  
       
