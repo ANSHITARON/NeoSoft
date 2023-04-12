@@ -13,11 +13,13 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v3
-      -
-        name: Set up JDK 1.8
-        uses: action/setup-java@v1
+     - name: Set up JDK 18
+       uses: actions/setup-java@v2
         with:
-         java-version: 1.8
+        java-version: 18
+
+    - name: Build with Maven
+      run: mvn clean package -DskipTests
         
       -
         name: Login to Docker Hub
@@ -33,7 +35,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
           push: true
           tags: anshit84/clockbox:latest
            
