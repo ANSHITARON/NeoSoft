@@ -54,5 +54,5 @@ jobs:
 
     - name: Run Docker container create network
       run: docker network create bootapp
-    - name: docker pull mysql
-      run: docker pull mysql
+    - name: docker pull mongodb
+      run: docker run -d --name mongodb --network bootapp -e ME_CONFIG_MONGODB_SERVER=http://localhost:8081 -p 8081:8081 mongo-express
