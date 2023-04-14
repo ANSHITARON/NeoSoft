@@ -18,6 +18,10 @@ jobs:
       uses: actions/setup-java@v1.4.4
       with:
         java-version: 17
+    - name: Build app
+      run: npm run build
+    - name: Test app
+      run: npm test
     - run: mvn --batch-mode --update-snapshots verify
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v3
