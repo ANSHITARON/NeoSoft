@@ -13,14 +13,11 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v2-beta
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v1.4.4
       with:
-        node-version: '14'
-    - name: Build app
-      run: npm run build
-    - name: Test app
-      run: npm test
+        java-version: 17
     - run: mvn --batch-mode --update-snapshots verify
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v3
@@ -34,4 +31,3 @@ jobs:
         registry: docker.io
         username: anshit84
         password: anshit@123
-      
