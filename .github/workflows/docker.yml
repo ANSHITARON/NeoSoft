@@ -53,4 +53,4 @@ jobs:
       run: docker pull anshit84/git:latest
 
     - name: Run Docker container
-      run: docker run -d --name store -p 9091:9090 --network=bootapp -e MYSQL_HOST=mysql -e MYSQL_PORT=3306 anshit84/electronic1.0:latest
+      run: docker network create bootapp
