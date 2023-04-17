@@ -40,7 +40,7 @@ jobs:
           with:
             path: target-files
         - name: output contents
-          runs: ls
+          run: ls
         - name: deploy
           run: echo "deploying..!"
 
