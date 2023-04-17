@@ -15,7 +15,7 @@ jobs:
          run:  mvn -B package --file pom.xml
        - name: test with maven
          run: mvn test --file pom.xml
-  deploy:
+  Build:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -28,7 +28,11 @@ jobs:
         - name: Build with Maven
           run: mvn -B package --file pom.xml
         - name: build with maven
-          run: mvn --batch-mode --update-snapshots package
+          uses: actions/upload-artifact@v3
+  Deploy:
+    need: Build
+    runs-on: ubuntu-latest
+    steps:
         - name: deploy
           run: echo "deploying..!"
 
