@@ -38,7 +38,7 @@ jobs:
         - name: get build artifact
           uses: actions/download-artifact@v3
           with:
-            name: target-files
+            path: target-files
         - name: output contents
           runs: ls
         - name: deploy
