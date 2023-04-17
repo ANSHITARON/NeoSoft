@@ -30,7 +30,7 @@ jobs:
         - name: build with maven
           uses: actions/upload-artifact@v3
   Deploy:
-    need: Build
+    needsS: Build
     runs-on: ubuntu-latest
     steps:
         - name: deploy
