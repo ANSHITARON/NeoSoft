@@ -29,7 +29,8 @@ jobs:
           run: mvn -B package --file pom.xml
         - name: build with maven
           uses: actions/upload-artifact@v3
-          with: target
+          with:
+            path: target
   Deploy:
     needs: Build
     runs-on: ubuntu-latest
