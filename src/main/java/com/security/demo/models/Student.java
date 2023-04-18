@@ -3,7 +3,7 @@ package com.security.demo.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collation = "students")
+@Document(collection = "students")
 public class Student {
     @Id
     private int id;

@@ -3,6 +3,7 @@ package com.security.demo.controller;
 
 import com.security.demo.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.security.demo.repo.StudentRepo;
@@ -21,11 +22,12 @@ public class MyController {
         save = this.studentRepo.save(student);
         return ResponseEntity.ok(save);
     }
-
     @GetMapping("/get")
     public ResponseEntity<List<Student>> getStudent()
     {
-        return ResponseEntity.ok(this.studentRepo.findAll());
+       List<Student> list=studentRepo.findAll();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+
     }
 
 
